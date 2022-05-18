@@ -7,7 +7,8 @@
 
 import Foundation
 
-
+// https://stackoverflow.com/questions/43470859/generic-extension-for-array-in-swift
+// Extension on [User] where you replace the original array with new data from URL
 extension Array where Element == User {
     mutating func loadDataFromUrl(url: String) async -> Void {
         guard let friendUrl = URL(string: url) else {
@@ -15,8 +16,10 @@ extension Array where Element == User {
             return
         }
         do {
+            // fetching data, trashing metadata
             let (data, _) = try await URLSession.shared.data(from: friendUrl)
             
+            // checking if data decods in a form of "User"
             if let decodedResponse = try? JSONDecoder().decode([User].self, from: data) {
                 self = decodedResponse
             }

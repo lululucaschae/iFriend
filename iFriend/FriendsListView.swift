@@ -10,10 +10,33 @@ import SwiftUI
 
 struct FriendsListView: View {
     
-
+    let source = "https://www.hackingwithswift.com/samples/friendface.json"
+    @State private var friendsFromUrl = [User]()
+    
+    
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            ScrollView {
+                ForEach(friendsFromUrl, id: \.id) { friend in
+                    HStack {
+                        Text("\(friend.name)")
+                        Spacer()
+                        Text(friend.isActive ? "Active" : "Inactive")
+                    }
+                    .foregroundColor(friend.isActive ? Color.blue : Color.secondary)
+                    .padding(.horizontal, 30)
+                    .padding(.vertical, 8)
+                    .frame(maxWidth:.infinity)
+                }
+                .padding(.top)
+                .task {
+                    await friendsFromUrl.loadDataFromUrl(url: source)
+                    
+                }
+            }
+            .navigationTitle("Friendsies")
+        }
     }
 }
 

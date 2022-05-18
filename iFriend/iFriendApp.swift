@@ -11,7 +11,7 @@ import SwiftUI
 struct iFriendApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }
