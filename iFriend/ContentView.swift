@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct ContentView: View {
-    
+    let source = "https://www.hackingwithswift.com/samples/friendface.json"
     @State private var friendsFromUrl = [User]()
 
     var body: some View {
@@ -19,28 +19,12 @@ struct ContentView: View {
                     Text("friend: \(friend.name)")
                 }
                 .task {
-                    await loadData()
+                    await friendsFromUrl.loadDataFromUrl(url: source)
                 }
             }
         }
     }
-    
-    func loadData() async {
-        guard let friendUrl = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {
-            print("Invalid URL")
-            return
-        }
-        do {
-            let (data, _) = try await URLSession.shared.data(from: friendUrl)
-            
-            if let decodedResponse = try? JSONDecoder().decode([User].self, from: data) {
-                friendsFromUrl = decodedResponse.self
-            }
-        } catch {
-            print("Invalid data")
-        }
-        
-    }
+
 }
 
 struct ContentView_Previews: PreviewProvider {

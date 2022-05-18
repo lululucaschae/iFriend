@@ -43,7 +43,6 @@
 		612541DE2834DC2900D1D60F = {
 			isa = PBXGroup;
 			children = (
-				612542022834F50100D1D60F /* DataHandler.swift */,
 				612541E92834DC2900D1D60F /* iFriend */,
 				612541E82834DC2900D1D60F /* Products */,
 			);
@@ -63,6 +62,7 @@
 				612541EA2834DC2900D1D60F /* iFriendApp.swift */,
 				612541EC2834DC2900D1D60F /* ContentView.swift */,
 				612541FA2834DCA700D1D60F /* FriendsListView.swift */,
+				612542022834F50100D1D60F /* DataHandler.swift */,
 				612541FF2834DF6C00D1D60F /* Data */,
 				612541EE2834DC2A00D1D60F /* Assets.xcassets */,
 				612541F02834DC2A00D1D60F /* Preview Content */,
