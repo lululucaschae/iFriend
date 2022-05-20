@@ -7,10 +7,15 @@
 
 import Foundation
 
+
+
 // https://stackoverflow.com/questions/43470859/generic-extension-for-array-in-swift
 // Extension on [User] where you replace the original array with new data from URL
 extension Array where Element == User {
     mutating func loadDataFromUrl(url: String) async -> Void {
+        guard self.isEmpty else {
+            return
+        }
         guard let friendUrl = URL(string: url) else {
             print("Invalid URL")
             return
@@ -24,6 +29,7 @@ extension Array where Element == User {
                 self = decodedResponse
             }
         } catch {
+//            fatalError("Failed to decode from bundle. Error: \(error)")
             print("Invalid data")
         }
     }

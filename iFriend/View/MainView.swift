@@ -7,15 +7,19 @@
 
 import SwiftUI
 
-
 struct MainView: View {
+    
 
 
     var body: some View {
-        FriendsListView()
+        NavigationView {
+            UserListView()
+        }
+           
+        }
     }
 
-}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

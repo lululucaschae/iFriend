@@ -12,12 +12,22 @@ struct User: Codable, Identifiable {
     let isActive: Bool
     let age: Int
     let tags: [String]
-    
-    struct friends: Codable {
-        let id: String
-        let name: String
+    let friends: [Friend]
+
+    init() {
+        id = ""
+        name = ""
+        company = ""
+        email = ""
+        address = ""
+        about = ""
+        registered = ""
+        isActive = false
+        age = 0
+        tags = []
+        friends = [Friend(id: "", name: "")]
     }
-    
+
     
 
 }
